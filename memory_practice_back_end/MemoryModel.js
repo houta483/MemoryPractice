@@ -15,7 +15,7 @@ connection.connect((err) => {
   
   const createDatabase = 'CREATE DATABASE IF NOT EXISTS memoryDB';
   const useDatabase = 'USE memoryDB';
-  const createTable = 'CREATE TABLE IF NOT EXISTS memoryTable (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, numberOfDigits int, incorrectDigits VARCHAR(300), mistakenStringOfNums int, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)'
+  const createTable = 'CREATE TABLE IF NOT EXISTS memoryTable (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, numberOfDigits int, incorrectDigits VARCHAR(300), mistakenStringOfNums VARCHAR(2000), created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)'
 
   connection.query(createDatabase, (err, result) => {
     if (err) throw err;

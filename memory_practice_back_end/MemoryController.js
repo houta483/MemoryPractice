@@ -23,6 +23,28 @@ module.exports = {
       res.locals.result = result;
       return next();
     })
+  },
+
+  getMostRecentRecords(req, res, next) {
+    const sql = '*** Select the most recent scores ***'
+    
+    db.query(sql, (error, result) => {
+      if (error) throw error;
+
+      res.locals.result = result;
+      return next();
+    })
+  },
+
+  getHighScore(req, res, next) {
+    const sql = 'SELECT MAX(numberOfDigits) FROM memoryTable'
+
+    db.query(sql, (error, result) => {
+      if (error) throw error;
+
+      res.locals.result = result
+      return next()
+    })
   }
   // Add average digit memory length????
 }

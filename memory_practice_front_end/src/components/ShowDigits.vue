@@ -15,7 +15,7 @@
     </div>
 
     <div>
-      <input v-model='inputDigits' class="input" />
+      <input v-on:keyup.enter="click" v-model='inputDigits' class="input" ref="input" />
 
       <br>
       <button @click='click' class='btn'>
@@ -46,6 +46,9 @@ export default {
     }
   },
   methods: {
+    focusInput() {
+      this.$refs.input.focus();
+    },
     score () {
       if (this.round === 0) {
         return 0
@@ -55,6 +58,8 @@ export default {
       }
     },
     async click () {
+      this.focusInput()
+
       if (this.round === 0) {
         await this.incrementNums(this.round)
         this.game = true
@@ -64,8 +69,8 @@ export default {
       }
       
       else if (this.inputDigits === this.digits) {
-        await this.timer()
         await this.incrementNums(this.round);
+        await this.timer()
         this.timeout = false;
       }
 
@@ -96,7 +101,7 @@ export default {
         let inputPair = this.inputDigits.slice(i, i+2);
         
         if (digitPair !== inputPair) {
-          this.incorrectInputPairs += String(inputPair + '-')
+          this.incorrectInputPairs += String(digitPair + '-')
         }
       }
       this.incorrectInputPairs = this.incorrectInputPairs.slice(0, -1)

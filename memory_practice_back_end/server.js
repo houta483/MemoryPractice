@@ -20,4 +20,13 @@ app.get('/', memoryController.getRecords, (req, res) => {
   res.status(200).send(res.locals.result)
 })
 
+// get the most recent scores
+app.get('/recentScores', memoryController.getMostRecentRecords, (req, res) => {
+  res.status(200).send(res.locals.result)
+})
+
+app.get('/highScore', memoryController.getHighScore, (req, res) => {
+  res.status(200).send(res.locals.result)
+})
+
 app.listen(PORT, () => console.log(`Listening on Port ${PORT}`))

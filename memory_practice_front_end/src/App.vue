@@ -16,6 +16,11 @@ export default {
 </script>
 
 <style>
+body {
+  display: grid;
+  grid-template-columns: 40px 50px auto 50px 40px;
+
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,5 +28,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  max-width: 1500px;
+  min-width: 1000px;
+  grid-column: 3 / span 1;
+  justify-self: center;
 }
 </style>
